@@ -1,0 +1,16 @@
+# Python 缓存
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Celery 临时文件
+celerybeat-schedule
+celerybeat.pid
+
+# 日志文件
+*.log
+logs/
+
+# 系统临时文件
+*.swp
