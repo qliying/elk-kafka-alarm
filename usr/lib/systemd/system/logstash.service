@@ -1,0 +1,20 @@
+[Unit]
+Description=Logstash
+Documentation=https://www.elastic.co/guide/en/logstash/current/index.html
+After=network.target
+
+[Service]
+User=logstash
+Group=logstash
+Environment=LS_HOME=/usr/share/logstash
+Environment=LS_SETTINGS_DIR=/etc/logstash
+Environment=LS_CONF_DIR=/etc/logstash/conf.d
+Environment=LS_LOG_DIR=/var/log/logstash
+Environment=LS_DATA_DIR=/var/lib/logstash
+Environment=PIDFILE=/var/run/logstash/logstash.pid
+ExecStart=/usr/share/logstash/bin/logstash --path.settings /etc/logstash
+Restart=always
+LimitNOFILE=65535
+
+[Install]
+WantedBy=multi-user.target
