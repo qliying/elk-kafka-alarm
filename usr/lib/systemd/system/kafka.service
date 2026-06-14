@@ -1,0 +1,14 @@
+[Unit]
+Description=Apache Kafka Server (Raft mode)
+After=network.target
+
+[Service]
+Type=forking
+User=root
+Group=root
+ExecStart=/opt/kafka_2.13-3.6.1/bin/kafka-server-start.sh -daemon /opt/kafka_2.13-3.6.1/config/kraft/server.properties
+ExecStop=/opt/kafka_2.13-3.6.1/bin/kafka-server-stop.sh
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
