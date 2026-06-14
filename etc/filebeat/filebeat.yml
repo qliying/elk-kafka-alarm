@@ -1,0 +1,18 @@
+filebeat.inputs:
+# 采集 Nginx 访问&错误日志
+- type: log
+  enabled: true
+  paths:
+    - /var/log/nginx/access.log
+    - /var/log/nginx/error.log
+
+# 采集系统安全日志（SSH登录、账号操作、暴力破解）
+- type: log
+  enabled: true
+  paths:
+    - /var/log/secure
+
+output.kafka:
+  hosts: ["kafka1:9092", "kafka2:9092", "kafka3:9092"]
+  topic: "nginx-log"
+  required_acks: 1
